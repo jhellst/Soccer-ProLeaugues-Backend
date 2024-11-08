@@ -27,7 +27,7 @@ RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r /app/requirements.txt
 
 # Ensure init-seed.sh is executable (if it's needed for initial setup)
-RUN chmod +x /app/soccer-proleagues-backend/init-seed.sh
+RUN chmod +x /app/init-seed.sh
 
 # Optionally, set the entrypoint for your application
 # Example: If your app runs via gunicorn
