@@ -24,6 +24,7 @@ COPY ./ /app
 RUN pip install --upgrade pip
 
 # Install Python dependencies from requirements.txt
+COPY requirements.txt /app/requirements.txt
 RUN pip install --no-cache-dir -r /app/requirements.txt
 
 # Ensure init-seed.sh is executable (if it's needed for initial setup)
