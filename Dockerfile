@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install -y \
 
 # Copy the backend code into the container at /app/soccer-proleagues-backend
 # COPY ./soccer-proleagues-backend /app/soccer-proleagues-backend
-COPY ./backend/soccer-proleagues-backend /app/soccer-proleagues-backend
+COPY ./ /app
 
 
 # Upgrade pip to the latest version
