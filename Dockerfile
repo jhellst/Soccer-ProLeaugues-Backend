@@ -24,7 +24,7 @@ COPY ./ /app
 RUN pip install --upgrade pip
 
 # Install Python dependencies from requirements.txt
-RUN pip install --no-cache-dir -r /app/soccer-proleagues-backend/requirements.txt
+RUN pip install --no-cache-dir -r /app/requirements.txt
 
 # Ensure init-seed.sh is executable (if it's needed for initial setup)
 RUN chmod +x /app/soccer-proleagues-backend/init-seed.sh
