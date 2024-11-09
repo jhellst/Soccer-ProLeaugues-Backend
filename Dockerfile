@@ -19,7 +19,6 @@ RUN apt-get update && apt-get install -y \
 # COPY ./soccer-proleagues-backend /app/soccer-proleagues-backend
 COPY ./ /app
 
-
 # Upgrade pip to the latest version
 RUN pip install --upgrade pip
 
