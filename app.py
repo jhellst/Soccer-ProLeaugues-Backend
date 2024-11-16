@@ -20,7 +20,8 @@ load_dotenv()
 CURR_USER_KEY = "curr_user"
 app = Flask(__name__)
 # CORS(app)
-CORS(app, supports_credentials=True)
+# CORS(app, supports_credentials=True)
+CORS(app, supports_credentials=True, resources={r"/*": {"origins": "https://soccer-proleagues-frontend-final.onrender.com"}})
 
 bcrypt = Bcrypt(app)
 
