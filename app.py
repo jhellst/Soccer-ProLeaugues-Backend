@@ -456,10 +456,11 @@ def update_all_leagues():
     for endpoint in league_endpoints:
         try:
             response = requests.post(endpoint)
-            results[endpoint] = response.status_code
+            results[endpoint] = f"Status code: {response.status_code}, Response text: {response.text}"
         except Exception as e:
-            results[endpoint] = str(e)
-    # return jsonify(results)
+            results[endpoint] = f"Error: {str(e)}"
+    return results
+
 
 
 
