@@ -442,24 +442,37 @@ def update_league_stats(league_id):
 # Chron-Job:
 @app.route('/leagues/update-all', methods=['GET', 'POST'])
 def update_all_leagues():
-    league_endpoints = [
-        "https://soccer-proleaugues-backend.onrender.com/leagues/1/update",
-        "https://soccer-proleaugues-backend.onrender.com/leagues/2/update",
-        "https://soccer-proleaugues-backend.onrender.com/leagues/3/update",
-        "https://soccer-proleaugues-backend.onrender.com/leagues/4/update",
-        "https://soccer-proleaugues-backend.onrender.com/leagues/5/update",
-        "https://soccer-proleaugues-backend.onrender.com/leagues/6/update",
-        "https://soccer-proleaugues-backend.onrender.com/leagues/7/update",
-        "https://soccer-proleaugues-backend.onrender.com/leagues/8/update",
-    ]
-    results = {}
-    for endpoint in league_endpoints:
-        try:
-            response = requests.post(endpoint)
-            results[endpoint] = f"Status code: {response.status_code}, Response text: {response.text}"
-        except Exception as e:
-            results[endpoint] = f"Error: {str(e)}"
-    return results
+
+    for league_id in range(0, 9):
+        league_url = League.get_league_url(league_id)
+
+        team_infos = retrieveLeagueInfo(league_url)
+        for team_info in team_infos:  # Update teams from newly scraped table data.
+
+            team_exists = db.session.query(Team).filter(
+                Team.team_name == team_info.teamName).one_or_none()  # Checks if team exists already.
+
+            if not team_exists:
+                team = Team(team_name=team_info.teamName,
+                            team_name_abbrev=team_info.teamNameAbbrev,
+                            team_crest=team_info.teamCrest,
+                            team_hyperlink=team_info.teamHyperlink)
+
+                db.session.merge(team)
+                db.session.commit()
+
+        current_team = db.session.query(Team).filter(
+            Team.team_name == team_info.teamName).one()
+
+        # Using team_id and league_id as reference, update the team's statistics for specific league in the database.
+        current_team_league_statistics = StatisticsForLeague(team_id=current_team.id, league_id=league_id,
+                                                             current_standing=team_info.currentStanding, games_played=team_info.gamesPlayed,
+                                                             wins=team_info.wins, draws=team_info.draws, losses=team_info.losses,
+                                                             goals_for=team_info.goalsFor, goals_against=team_info.goalsAgainst,
+                                                             goals_differential=team_info.goalDifferential, points=team_info.points)
+
+        db.session.merge(current_team_league_statistics)
+        db.session.commit()
 
 
 
