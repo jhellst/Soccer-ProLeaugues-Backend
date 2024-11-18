@@ -443,7 +443,7 @@ def update_league_stats(league_id):
 @app.route('/leagues/update-all', methods=['GET', 'POST'])
 def update_all_leagues():
 
-    for league_id in range(0, 9):
+    for league_id in [0, 1, 2, 3, 4, 5, 6, 7, 8]:
         league_url = League.get_league_url(league_id)
 
         team_infos = retrieveLeagueInfo(league_url)
