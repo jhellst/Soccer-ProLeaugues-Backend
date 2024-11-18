@@ -459,7 +459,7 @@ def update_all_leagues():
             results[endpoint] = response.status_code
         except Exception as e:
             results[endpoint] = str(e)
-    return jsonify(results)
+    # return jsonify(results)
 
 
 
