@@ -1,4 +1,5 @@
 import os
+import requests
 from dotenv import load_dotenv
 from flask import Flask, jsonify, request, flash, redirect, session, render_template, url_for, g
 from flask_sqlalchemy import SQLAlchemy
@@ -436,6 +437,30 @@ def update_league_stats(league_id):
         db.session.commit()
 
     return redirect(url_for('get_league_table', league_id=league_id))
+
+
+# Chron-Job:
+@app.route('/leagues/update-all', methods=['POST'])
+def update_all_leagues():
+    league_endpoints = [
+        "https://soccer-proleaugues-backend.onrender.com/leagues/1/update",
+        "https://soccer-proleaugues-backend.onrender.com/leagues/2/update",
+        "https://soccer-proleaugues-backend.onrender.com/leagues/3/update",
+        "https://soccer-proleaugues-backend.onrender.com/leagues/4/update",
+        "https://soccer-proleaugues-backend.onrender.com/leagues/5/update",
+        "https://soccer-proleaugues-backend.onrender.com/leagues/6/update",
+        "https://soccer-proleaugues-backend.onrender.com/leagues/7/update",
+        "https://soccer-proleaugues-backend.onrender.com/leagues/8/update",
+    ]
+    results = {}
+    for endpoint in league_endpoints:
+        try:
+            response = requests.post(endpoint)
+            results[endpoint] = response.status_code
+        except Exception as e:
+            results[endpoint] = str(e)
+    return jsonify(results)
+
 
 
 # Error route.
