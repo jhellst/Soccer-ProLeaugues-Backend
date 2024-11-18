@@ -440,7 +440,7 @@ def update_league_stats(league_id):
 
 
 # Chron-Job:
-@app.route('/leagues/update-all', methods=['POST'])
+@app.route('/leagues/update-all', methods=['GET', 'POST'])
 def update_all_leagues():
     league_endpoints = [
         "https://soccer-proleaugues-backend.onrender.com/leagues/1/update",
