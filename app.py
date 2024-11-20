@@ -440,40 +440,39 @@ def update_league_stats(league_id):
 
 
 # Chron-Job:
-@app.route('/leagues/update-all', methods=['GET', 'POST'])
-def update_all_leagues():
+# @app.route('/leagues/update-all', methods=['GET', 'POST'])
+# def update_all_leagues():
 
-    for league_id in [0, 1, 2, 3, 4, 5, 6, 7, 8]:
-        league_url = League.get_league_url(league_id)
+#     for league_id in [0, 1, 2, 3, 4, 5, 6, 7, 8]:
+#         league_url = League.get_league_url(league_id)
 
-        team_infos = retrieveLeagueInfo(league_url)
-        for team_info in team_infos:  # Update teams from newly scraped table data.
+#         team_infos = retrieveLeagueInfo(league_url)
+#         for team_info in team_infos:  # Update teams from newly scraped table data.
 
-            team_exists = db.session.query(Team).filter(
-                Team.team_name == team_info.teamName).one_or_none()  # Checks if team exists already.
+#             team_exists = db.session.query(Team).filter(
+#                 Team.team_name == team_info.teamName).one_or_none()  # Checks if team exists already.
 
-            if not team_exists:
-                team = Team(team_name=team_info.teamName,
-                            team_name_abbrev=team_info.teamNameAbbrev,
-                            team_crest=team_info.teamCrest,
-                            team_hyperlink=team_info.teamHyperlink)
+#             if not team_exists:
+#                 team = Team(team_name=team_info.teamName,
+#                             team_name_abbrev=team_info.teamNameAbbrev,
+#                             team_crest=team_info.teamCrest,
+#                             team_hyperlink=team_info.teamHyperlink)
 
-                db.session.merge(team)
-                db.session.commit()
+#                 db.session.merge(team)
+#                 db.session.commit()
 
-        current_team = db.session.query(Team).filter(
-            Team.team_name == team_info.teamName).one()
+#         current_team = db.session.query(Team).filter(
+#             Team.team_name == team_info.teamName).one()
 
-        # Using team_id and league_id as reference, update the team's statistics for specific league in the database.
-        current_team_league_statistics = StatisticsForLeague(team_id=current_team.id, league_id=league_id,
-                                                             current_standing=team_info.currentStanding, games_played=team_info.gamesPlayed,
-                                                             wins=team_info.wins, draws=team_info.draws, losses=team_info.losses,
-                                                             goals_for=team_info.goalsFor, goals_against=team_info.goalsAgainst,
-                                                             goals_differential=team_info.goalDifferential, points=team_info.points)
+#         # Using team_id and league_id as reference, update the team's statistics for specific league in the database.
+#         current_team_league_statistics = StatisticsForLeague(team_id=current_team.id, league_id=league_id,
+#                                                              current_standing=team_info.currentStanding, games_played=team_info.gamesPlayed,
+#                                                              wins=team_info.wins, draws=team_info.draws, losses=team_info.losses,
+#                                                              goals_for=team_info.goalsFor, goals_against=team_info.goalsAgainst,
+#                                                              goals_differential=team_info.goalDifferential, points=team_info.points)
 
-        db.session.merge(current_team_league_statistics)
-        db.session.commit()
-
+#         db.session.merge(current_team_league_statistics)
+#         db.session.commit()
 
 
 
