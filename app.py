@@ -475,6 +475,10 @@ def update_league_stats(league_id):
 #         db.session.commit()
 
 
+# Ping the server to keep it running (in case of Render free instance).
+@app.route('/ping', methods=['GET'])
+def ping():
+    return 'Pong', 200
 
 # Error route.
 @app.errorhandler(404)
