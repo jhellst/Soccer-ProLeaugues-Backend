@@ -167,8 +167,8 @@ class League(db.Model):
     league_table = db.relationship(
         'Team', secondary='statistics_for_leagues', backref='leagues')
 
-    users_following_league = db.relationship(
-        'User', secondary='leagues_followed_by_users', backref='leagues')
+    # users_following_league = db.relationship(
+    #     'User', secondary='leagues_followed_by_users', backref='leagues')
 
     @classmethod
     def get_league_url(cls, league_id):
