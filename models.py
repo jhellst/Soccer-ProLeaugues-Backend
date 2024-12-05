@@ -250,7 +250,7 @@ class StatisticsForLeague(db.Model):
         nullable=False
     )
 
-    # TODO: Add team_form as a final database column. Investigate how to best visualize this in league table (graph or text-based).
+    # Consider adding team_form as a final database column. Investigate how to best visualize this in league table (graph or text-based).
     # List of results (text description) over team's last 5 games.
     # team_form = db.Column(
     #     db.Integer,
@@ -278,7 +278,6 @@ class TeamsFollowedByUser(db.Model):
     @classmethod
     def follow_team(cls, team_id, user_id):
         """Follows a team to be included in the user's custom team page."""
-        # print("team_and_user_id@backend", team_id, user_id)
         team_follow = TeamsFollowedByUser(user_id=user_id, team_id=team_id)
 
         db.session.merge(team_follow)
@@ -288,7 +287,6 @@ class TeamsFollowedByUser(db.Model):
     @classmethod
     def unfollow_team(cls, team_id, user_id):
         """Unfollows a team that was included in the user's custom team page."""
-        # print("unfollow_team", team_id, user_id)
         team_unfollow = TeamsFollowedByUser.query.filter(TeamsFollowedByUser.team_id == team_id).filter(
             TeamsFollowedByUser.user_id == user_id)
 
@@ -345,7 +343,7 @@ class LeaguesFollowedByUser(db.Model):
             league_id: league_id
         }
 
-    @classmethod  # TODO: Refine this and test.
+    @classmethod
     def get_followed_leagues(cls, user_id):
         """Gets a list of leagues that a user is following."""
         followed_leagues = db.session.query(League, LeaguesFollowedByUser).filter(
