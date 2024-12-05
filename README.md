@@ -21,7 +21,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/jhellst/Soccer-ProLeagues">
-    <img src="src/images/logo.svg" alt="Logo" width="250" height="250">
+    <img src="images/logo.svg" alt="Logo" width="250" height="250">
   </a>
 
   <!-- <h1 align="center">Soccer ProLeagues</h1> -->
@@ -60,19 +60,19 @@
 <ul>
     <li>
       <div>Homepage</div>
-      <img src="soccer-proleagues-frontend/src/images/readme/1 - homepage.png" alt="Soccer ProLeagues Homepage" width="800" height="500">
+      <img src="images/readme/1 - homepage.png" alt="Soccer ProLeagues Homepage" width="800" height="500">
     </li>
     <li>
       <div>League Pages</div>
-      <img src="soccer-proleagues-frontend/src/images/readme/2 - allLeagues.png" alt="All Leagues" width="800" height="500">
-      <img src="soccer-proleagues-frontend/src/images/readme/3 - followedLeagues.png" alt="Followed Leagues" width="800" height="500">
-      <img src="soccer-proleagues-frontend/src/images/readme/5 - leagueTable.png" alt="League Table" width="800" height="500">
+      <img src="images/readme/2 - allLeagues.png" alt="All Leagues" width="800" height="500">
+      <img src="images/readme/3 - followedLeagues.png" alt="Followed Leagues" width="800" height="500">
+      <img src="images/readme/5 - leagueTable.png" alt="League Table" width="800" height="500">
     </li>
     <li>
       <div>Team Pages</div>
-      <img src="soccer-proleagues-frontend/src/images/readme/6 - allTeams.png" alt="All Teams" width="800" height="500">
-      <img src="soccer-proleagues-frontend/src/images/readme/7 - followedTeams.png" alt="Followed Teams" width="800" height="500">
-      <img src="soccer-proleagues-frontend/src/images/readme/4 - singleTeamPage.png" alt="Single Team Page" width="800" height="500">
+      <img src="images/readme/6 - allTeams.png" alt="All Teams" width="800" height="500">
+      <img src="images/readme/7 - followedTeams.png" alt="Followed Teams" width="800" height="500">
+      <img src="images/readme/4 - singleTeamPage.png" alt="Single Team Page" width="800" height="500">
     </li>
 
   </ul>
