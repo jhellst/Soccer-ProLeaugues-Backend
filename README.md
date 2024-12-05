@@ -21,7 +21,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/jhellst/Soccer-ProLeagues">
-    <img src="soccer-proleagues-frontend/src/images/logo.svg" alt="Logo" width="250" height="250">
+    <img src="src/images/logo.svg" alt="Logo" width="250" height="250">
   </a>
 
   <!-- <h1 align="center">Soccer ProLeagues</h1> -->
