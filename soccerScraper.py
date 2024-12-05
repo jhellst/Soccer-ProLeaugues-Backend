@@ -55,7 +55,6 @@ class TeamInfo:
             self.goalsAgainst = int(goalsAgainst.text)
             self.goalDifferential = int(goalDifferential.string)
             self.points = int(points.string)
-            # print("teamInfo@soccerScraper", self.teamName, self.teamNameAbbrev, self.teamCrest, self.teamHyperlink, self.teamName, self.currentStanding, self.gamesPlayed, self.wins, self.draws, self.losses, self.goalsFor, self.goalsAgainst, self.goalDifferential, self.points)
 
         else: # teamInfo is data pulled from db -> can be directly stored/accessed.
             teamName, teamNameAbbrev, teamCrest, teamHyperlink, currentStanding, gamesPlayed, wins, draws, losses, goalsFor, goalsAgainst, goalDifferential, points = teamInfo
@@ -75,8 +74,6 @@ class TeamInfo:
             self.points = points
             # self.teamForm = re.split(r"\s{2,}", teamFormFullText.text.strip())
 
-    # def get_team_statistics(self):
-    #     return {self}
 
 
 # For current iteration, will only use 1 league: English Premier League (EPL).
@@ -97,23 +94,13 @@ def retrieveLeagueInfo(url):
 
     # team_infos = [i for i in league_table_body]
 
-    # print("league_table_body", league_table_body)
     team_infos = []
     if league_table_body:
         team_infos = [i for i in league_table_body]
-    # print("team_infos", team_infos)
 
     teams_in_league = []
     if team_infos:
         teams_in_league = [TeamInfo(team.find_all("td")) for team in team_infos]
-        # teams_in_league = [team.find_all("td") for team in team_infos]
-        # print("teams_in_league!!", teams_in_league)
-        # teams_in_league = [TeamInfo(team) for team in team_infos]
-
-    # for team in teams_in_league:
-    #     print("team!!!", team)
-
-    # print("teams_in_league@@", teams_in_league)
 
     return teams_in_league
 
