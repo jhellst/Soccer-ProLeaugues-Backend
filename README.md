@@ -27,8 +27,8 @@
   <!-- <h1 align="center">Soccer ProLeagues</h1> -->
 
   <p align="center">
-    <a href="https://soccer-proleagues.onrender.com/">Project Link (Note: Website may take ~45 seconds to load and retrieve data)</a>
-    <a href="https://drive.google.com/file/d/1f4TY-bUpUCd3NxmW6aM77AFWh1wnQlIA/view?usp=sharing">View Demo</a>
+    <a href="https://soccer-proleagues.onrender.com/">Demo Website</a>
+    <a href="https://drive.google.com/file/d/1f4TY-bUpUCd3NxmW6aM77AFWh1wnQlIA/view?usp=sharing">Demo Video</a>
   </p>
 </div>
 
