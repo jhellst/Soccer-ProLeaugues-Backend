@@ -39,19 +39,10 @@ jwt = JWTManager(app)
 
 @jwt.expired_token_loader
 def my_expired_token_callback(expired_token, date):
-    # print("Hello from jwt_expired_decorator")
     return redirect(url_for('logout_user'))
 
 connect_db(app)
 
-
-# Next steps:
-# 1) Web scraper -> Deploy to the cloud and get it to run once per day.
-#       - Get it to scrape once per day and store in a database.
-# 2) Website that feeds from this database -> deploy this to the cloud.
-# "Chron Job" - A program that has a certain schedule to run.
-
-# Start by trying to deploy website to the cloud. Use Amazon web services for this.
 
 
 ##############################################################################
@@ -74,7 +65,6 @@ def register_user():
 
     user_info = {"username": username, "user_id": new_user.id}
     access_token = create_access_token(identity=json.dumps(user_info))
-    # print("access_token@@@register", access_token)
     return jsonify(access_token=access_token)
 
 
@@ -93,10 +83,8 @@ def login_user():
     if not bcrypt.check_password_hash(user.password, password):
         return jsonify({"error": "Unauthorized"}), 401
 
-    # access_token = create_refresh_token(identity=username)
     user_info = {"username": username, "user_id": user.id}
     access_token = create_access_token(identity=json.dumps(user_info))
-    # print("access_token@@@login", access_token)
     return jsonify(access_token=access_token)
 
 
@@ -105,14 +93,12 @@ def login_user():
 def get_token(username):
     user_info = User.query.filter_by(username=username).one_or_none()
     access_token = create_access_token(identity=json.dumps(user_info))
-    # print("current_user@token", current_user)
     return jsonify(access_token=access_token)
 
 
 # TODO: Figure out this route with jwt library.
 @app.route("/logout", methods=["POST"])
 def logout_user():
-    # print("session@@logout", session)
     session.pop("user_id")
     return "200"
 
@@ -138,7 +124,6 @@ def get_user(user_id):
         return jsonify({"error": "Unauthorized"}), 401
 
     user = User.query.filter_by(id=user_id).one_or_none()
-    # print("user!", user)
 
     if not user:
         return jsonify({"error": "Unauthorized"}), 401
@@ -153,7 +138,7 @@ def get_user(user_id):
 # API endpoints
 
 
-# Homepage. If user is logged in, will show list of followed leagues with other links. If not logged in, will show login/create account option and all leagues.
+# Homepage.
 # @app.get('/')
 # def root():
 #     """Show recent list of posts, most-recent first."""
@@ -177,13 +162,11 @@ def get_all_leagues():
 @cross_origin()
 def follow_league(user_id, league_id):
     """Follows a league, to be displayed on the user's league page (or homepage)."""
-    # print("Follow_league@backend", user_id, league_id)
 
     # Checks if user exists.
     user = db.session.query(User).filter(User.id == user_id).one_or_none()
     if not user:
         return jsonify({"error": "Unauthorized"}), 401
-    # print("user!", user)
 
     # Checks if league exists.
     league = db.session.query(League).filter(
@@ -204,7 +187,6 @@ def follow_league(user_id, league_id):
 @cross_origin()
 def unfollow_league(user_id, league_id):
     """Unfollows a league, to be removed from the user's custom league page."""
-    # print("Unfollow_league@backend", user_id, league_id)
 
     # Checks if user exists.
     user = db.session.query(User).filter(User.id == user_id).one_or_none()
@@ -230,7 +212,6 @@ def unfollow_league(user_id, league_id):
 @cross_origin()
 def follow_team(user_id, team_id):
     """Follows a team, to be displayed on the user's custom team page."""
-    # print("Follow_team@backend", user_id, team_id)
 
     # Checks if user exists.
     user = db.session.query(User).filter(User.id == user_id).one_or_none()
@@ -255,7 +236,6 @@ def follow_team(user_id, team_id):
 @cross_origin()
 def unfollow_team(user_id, team_id):
     """Unfollows a team, to be removed from the user's custom team page."""
-    # print("Unfollow_team@backend", user_id, team_id)
 
     # Checks if user exists.
     user = db.session.query(User).filter(User.id == user_id).one_or_none()
@@ -311,7 +291,6 @@ def get_followed_teams(user_id):
     user = User.query.filter_by(id=user_id).one_or_none()
 
     followed_teams = user.teams_followed_by_user
-    # print("followed_teams", followed_teams)
 
     teams = [{"team_name": team.team_name,
               "team_name_abbrev": team.team_name_abbrev,
@@ -439,46 +418,11 @@ def update_league_stats(league_id):
     return redirect(url_for('get_league_table', league_id=league_id))
 
 
-# Chron-Job:
-# @app.route('/leagues/update-all', methods=['GET', 'POST'])
-# def update_all_leagues():
-
-#     for league_id in [0, 1, 2, 3, 4, 5, 6, 7, 8]:
-#         league_url = League.get_league_url(league_id)
-
-#         team_infos = retrieveLeagueInfo(league_url)
-#         for team_info in team_infos:  # Update teams from newly scraped table data.
-
-#             team_exists = db.session.query(Team).filter(
-#                 Team.team_name == team_info.teamName).one_or_none()  # Checks if team exists already.
-
-#             if not team_exists:
-#                 team = Team(team_name=team_info.teamName,
-#                             team_name_abbrev=team_info.teamNameAbbrev,
-#                             team_crest=team_info.teamCrest,
-#                             team_hyperlink=team_info.teamHyperlink)
-
-#                 db.session.merge(team)
-#                 db.session.commit()
-
-#         current_team = db.session.query(Team).filter(
-#             Team.team_name == team_info.teamName).one()
-
-#         # Using team_id and league_id as reference, update the team's statistics for specific league in the database.
-#         current_team_league_statistics = StatisticsForLeague(team_id=current_team.id, league_id=league_id,
-#                                                              current_standing=team_info.currentStanding, games_played=team_info.gamesPlayed,
-#                                                              wins=team_info.wins, draws=team_info.draws, losses=team_info.losses,
-#                                                              goals_for=team_info.goalsFor, goals_against=team_info.goalsAgainst,
-#                                                              goals_differential=team_info.goalDifferential, points=team_info.points)
-
-#         db.session.merge(current_team_league_statistics)
-#         db.session.commit()
-
-
-# Ping the server to keep it running (in case of Render free instance).
+# Ping the server.
 @app.route('/ping', methods=['GET'])
 def ping():
     return 'Pong', 200
+
 
 # Error route.
 @app.errorhandler(404)
@@ -493,6 +437,3 @@ def page_not_found(e):
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port='4000')
-
-# if __name__ == '__main__':
-#     app.run(host='0.0.0.0', port='4000')
