@@ -93,6 +93,16 @@ A demo version of this project can be found here: https://soccer-proleagues.onre
 
 Please note that this project runs on a free Render instance. For this reason, the project's frontend and backend services may take up to 1 minute to spin up the server instances.
 
+
+## Project Details
+
+The GitHub repository for this project's frontend can be found here:
+- [Soccer ProLeagues Frontend](https://github.com/jhellst/Soccer-Proleagues-Frontend)
+
+A demo version of this project can be found here: https://soccer-proleagues.onrender.com/
+
+*Please note that this project runs on a free Render instance. For this reason, the project's frontend and backend services may take up to 1 minute to spin up the server instances.
+
 <!-- Frontend Located Here: -->
 
 <!-- Here's why:
