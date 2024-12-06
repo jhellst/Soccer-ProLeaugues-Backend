@@ -20,20 +20,20 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/jhellst/Soccer-ProLeagues">
+  <a href="https://github.com/jhellst/Soccer-Proleagues-Frontend">
     <img src="images/logo.svg" alt="Logo" width="250" height="250">
   </a>
 
   <!-- <h1 align="center">Soccer ProLeagues</h1> -->
 
   <p align="center">
-    <a href="https://soccer-proleagues.onrender.com/">Demo Website</a>
+    <a href="https://soccer-proleagues.onrender.com/">Demo Website*</a>
     <br>
     <a href="https://drive.google.com/file/d/1f4TY-bUpUCd3NxmW6aM77AFWh1wnQlIA/view?usp=sharing">Demo Video</a>
   </p>
 </div>
 
-
+\* Demo Website is hosted on a free Render instance, and may take 1 minute to start up the project frontend/backend instances.
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -87,7 +87,11 @@
 
 Soccer ProLeagues is web application that allows a user to select pro soccer leagues to track statistics and performance for each team in the league. League data is stored in a PostgreSQL database and updated via an automated web-scraping process. The frontend webpage accesses the data via an API route and retrieves/renders it for viewing.
 
-Users can select leagues to follow and unfollow, and can toggle on/off any statistics to customize their view. Visualization of league data is available, for simple exploration of league and team statistics.
+Users can select leagues and teams to follow and unfollow, and a user can visit customized pages that include the leagues/teams that they are following. Visualization of league data is available, for simple exploration of league and team statistics.
+
+A demo version of this project can be found here: https://soccer-proleagues.onrender.com/
+
+Please note that this project runs on a free Render instance. For this reason, the project's frontend and backend services may take up to 1 minute to spin up the server instances.
 
 <!-- Frontend Located Here: -->
 
@@ -111,6 +115,7 @@ Of course, no one template will serve all projects since your needs may be diffe
 * [![Flask-SQLAlchemy][Flask-SQLAlchemy]][Flask-SQLAlchemy-url]
 * [![React][React.js]][React-url]
 * [![PostgreSQL][PostgreSQL]][PostgreSQL-url]
+* [![Docker][Docker]][Docker-url]
 <!-- * [![Chart.js][Chart.js]][Chart.js-url] -->
 * [![JWT][JWT]][JWT-url]
 * [![bs4][bs4]][bs4-url]
@@ -126,7 +131,7 @@ Of course, no one template will serve all projects since your needs may be diffe
 [PostgreSQL-url]: https://www.postgresql.org/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactjs.org/
-[Docker]: (https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=fff)
+[Docker]: https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=fff
 [Docker-url]: https://www.docker.com/
 <!-- [Chart.js]: https://img.shields.io/badge/chart.js-F5788D.svg?style=for-the-badge&logo=chart.js&logoColor=white
 [Chart.js-url]: https://www.chartjs.org/ -->
@@ -143,73 +148,69 @@ To get a local copy up and running follow these simple example steps. -->
 
 ### Prerequisites
 
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
-* pip
-  ```sh
-  pip install pip
-  ```
+* Docker
+    - [Download Docker Desktop](https://docs.docker.com/get-started/get-docker/)
 * PostgreSQL
     - [Download PostgreSQL](https://www.postgresql.org/download/)
 <!-- This is an example of how to list things you need to use the software and how to install them. -->
 
-### Installation
+<!-- ### Installation
 1. Clone the repository
 ```sh
    git clone https://github.com/jhellst/Soccer-ProLeagues.git
-   ```
+   ``` -->
+
+### Installation Instructions
+1. Follow the instructions below to launch the project backend.
+2. After the project backend is up and running, visit the frontend repository and follow the initial setup instructions.
+    - [Soccer Proleagues Frontend](https://github.com/jhellst/Soccer-Proleagues-Frontend)
 
 #### Backend:
-
+1. Clone the backend repository
+```sh
+   git clone https://github.com/jhellst/Soccer-ProLeaugues-Backend.git
+   ```
 1. cd into backend folder
 ```sh
    cd soccer-proleagues-backend
    ```
-2. Instantiate virtual environment
-3. Create .env file with the following 2 environmental variables:
+<!-- 2. Instantiate virtual environment -->
+2. Create .env file with the following environmental variables:
    ```sh
+   POSTGRES_DB=<YOUR_DATABASE_NAME>
+   POSTGRES_USER=<YOUR_DATABASE_USER>
+   POSTGRES_PASSWORD=<YOUR_DATABASE_PASSWORD>
+   DATABASE_URI=<YOUR_DATABASE_URI> # Example: postgresql:///soccer_proleagues
    SECRET_KEY=<YOUR_SECRET_KEY>
-   DATABASE_URI=<YOUR_DATABASE_URI> # For example: postgresql:///soccer_proleagues
    ```
-4. Install dependencies from requirements.txt
-   ```sh
-   pip install -r requirements.txt
-   ```
-5. Download and install PostgreSQL (if not already installed)
+3. Download and install PostgreSQL (if not already installed). A cloud database can be used, alternatively.
     - [Download PostgreSQL](https://www.postgresql.org/download/)
-
-6. Run seed file to create db tables and populate database with latest teams, leagues, and statistics.
+4. Run Docker command to build
+   ```sh
+   docker compose up
+   ```
+5. Run seed file to create db tables and populate database with latest teams, leagues, and statistics.
    ```sh
    python3 seed.py
    ```
-7. Run backend server in terminal via Flask
-   ```sh
-   flask run -p 5001
-   ```
+6. Complete steps to build and run project frontend at the following link: https://github.com/jhellst/Soccer-Proleagues-Frontend
 
-#### Frontend:
+<!-- #### Frontend:
 
 1. cd into frontend folder
 ```sh
    cd soccer-proleagues-backend
    ```
-2. Install NPM packages
+2. Run Docker command to build
    ```sh
-   npm install
-   ```
-3. Run app
-    - Ensure that the backend is also running on port 5001.
-   ```sh
-   npm start
+   docker compose up
    ```
 4. To login, either signup a new user or login with one of the test users:
    ```sh
    (username: TestUser, password: test)
    (username: a, password: a)
    (username: b, password: b)
-   ```
+   ``` -->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -273,7 +274,7 @@ Don't forget to give the project a star! Thanks again!
 <!-- CONTACT -->
 ## Contact
 
-Joshua Hellstrom - [LinkedIn](https://www.linkedin.com/in/joshua-hellstrom/) - [Portfolio Website](https://joshua-hellstrom.surge.sh/) - jhellst@gmail.com
+Joshua Hellstrom - [LinkedIn](https://www.linkedin.com/in/joshua-hellstrom/) - [Portfolio Website](https://joshhellstrom.site/) - jhellst@gmail.com
 
 <!-- <p align="right">(<a href="#readme-top">back to top</a>)</p> -->
 
