@@ -33,7 +33,8 @@
   </p>
 </div>
 
-\* Demo Website is hosted on a free Render instance, and may take 1 minute to start up the project frontend/backend instances.
+<small>\* Note: Demo Website is hosted on a free Render instance, and may ~45 seconds to start up the project frontend + backend instances.</small>
+
 
 <!-- TABLE OF CONTENTS -->
 <details>
