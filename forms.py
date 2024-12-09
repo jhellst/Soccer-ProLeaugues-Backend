@@ -47,3 +47,4 @@ class UserEditForm(FlaskForm):
 
 class CSRFProtection(FlaskForm):
     """CSRF protection"""
+    pass
