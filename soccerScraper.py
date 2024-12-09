@@ -108,6 +108,8 @@ def retrieveLeagueInfo(url):
     # 1) Add the team itself to the db with display info.
     # 2) Add the team's league statistics to the db.
 
+    # TODO: Are the comments below up-to-date?
+
     # Next steps:
     # 1) Store data in PostegreSQL database -> Done
     # 2) Produce data tables and charts from database data -> In progress

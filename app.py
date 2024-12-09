@@ -100,6 +100,13 @@ def get_token(username):
 @app.route("/logout", methods=["POST"])
 def logout_user():
     session.pop("user_id")
+    # Returning an OK response in Flask should be a tuple, with {response message, status code}
+    #
+    # Example: `return "Logout successful", 200`
+    #
+    # Source: https://stackoverflow.com/a/7824605/6169225
+    #
+    # This also applies to OK responses, i.e. `return jsonify(...), 200` # Default is probably 200 so latter code probably unnecessary.
     return "200"
 
 
@@ -114,6 +121,9 @@ def get_all_users():
     users = [{"user_id": user.id, "username": user.username}
              for user in all_users]
 
+    # Probably inline to save some space, i.e.:
+    #
+    # return jsonify([{...} for user in all_users])
     return jsonify(users)
 
 
@@ -154,6 +164,7 @@ def get_all_leagues():
 
     leagues = [LeagueInfo(league.id, league.league_name, league.league_country, league.league_description, league.league_url,
                           league.last_updated_date) for league in all_leagues]
+    # TODO: Determine reason for straying from returning jsonify(dict{}), as done in most of this file.
     return leagues
 
 
@@ -431,7 +442,7 @@ def page_not_found(e):
 
     return render_template('404.html'), 404
 
-
+# TODO: Delete?
 # if __name__ == '__main__':
 #     app.run(port=5001, debug=True)
 

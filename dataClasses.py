@@ -29,4 +29,5 @@ class TeamInfoForLeague:
     goals_against: int
     goal_differential: int
     points: int
+    # TODO: Delete?
     # is_followed_by_user: bool
