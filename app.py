@@ -96,11 +96,10 @@ def get_token(username):
     return jsonify(access_token=access_token)
 
 
-# TODO: Figure out this route with jwt library.
 @app.route("/logout", methods=["POST"])
 def logout_user():
     session.pop("user_id")
-    return "200"
+    return "Logout successful", 200
 
 
 @app.route("/users", methods=["GET"])
@@ -432,8 +431,6 @@ def page_not_found(e):
     return render_template('404.html'), 404
 
 
-# if __name__ == '__main__':
-#     app.run(port=5001, debug=True)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port='4000')
