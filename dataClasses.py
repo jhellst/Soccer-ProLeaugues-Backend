@@ -29,4 +29,3 @@ class TeamInfoForLeague:
     goals_against: int
     goal_differential: int
     points: int
-    # is_followed_by_user: bool
