@@ -16,12 +16,6 @@ class UserAddForm(FlaskForm):
         validators=[InputRequired(), Length(min=6, max=50)],
     )
 
-    # email = StringField(
-    #     'E-mail',
-    #     validators=[InputRequired(), Email(), Length(max=50)],
-    # )
-
-
 
 class LoginForm(FlaskForm):
     """Login form."""
@@ -49,11 +43,6 @@ class UserEditForm(FlaskForm):
         'Password',
         validators=[InputRequired(), Length(min=6, max=50)],
     )
-
-    # email = StringField(
-    #     'E-mail',
-    #     validators=[InputRequired(), Email(), Length(max=50)],
-    # )
 
 
 class CSRFProtection(FlaskForm):
