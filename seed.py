@@ -1,3 +1,5 @@
+# TODO: I don't think you want the seed file to be in a public repo that you've shared
+#       with the interet. Add this file to your `.gitignore` file.
 from app import db
 from models import User, Team, League, StatisticsForLeague, LeaguesFollowedByUser, TeamsFollowedByUser
 from soccerScraper import retrieveLeagueInfo

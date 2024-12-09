@@ -167,6 +167,8 @@ To get a local copy up and running follow these simple example steps. -->
 <!-- This is an example of how to list things you need to use the software and how to install them. -->
 
 <!-- ### Installation
+TODO: Update this documentation to be consistent with the fact that you will have two repos,
+      one for frontend, one for backend, looks like you're pointing to the combined repo below.
 1. Clone the repository
 ```sh
    git clone https://github.com/jhellst/Soccer-ProLeagues.git
@@ -209,6 +211,7 @@ To get a local copy up and running follow these simple example steps. -->
 
 <!-- #### Frontend:
 
+TODO: cd into frontend or backend folder? If frontend, change `cd` instruction below.
 1. cd into frontend folder
 ```sh
    cd soccer-proleagues-backend

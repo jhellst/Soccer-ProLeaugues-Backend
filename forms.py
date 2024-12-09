@@ -16,6 +16,7 @@ class UserAddForm(FlaskForm):
         validators=[InputRequired(), Length(min=6, max=50)],
     )
 
+    # TODO: Delete?
     # email = StringField(
     #     'E-mail',
     #     validators=[InputRequired(), Email(), Length(max=50)],
@@ -50,6 +51,7 @@ class UserEditForm(FlaskForm):
         validators=[InputRequired(), Length(min=6, max=50)],
     )
 
+    # TODO: Delete?
     # email = StringField(
     #     'E-mail',
     #     validators=[InputRequired(), Email(), Length(max=50)],
@@ -58,3 +60,8 @@ class UserEditForm(FlaskForm):
 
 class CSRFProtection(FlaskForm):
     """CSRF protection"""
+    # TODO: Add `pass`, which is empty class convention.
+    #
+    # Resources:
+    # .   https://blog.finxter.com/5-best-ways-to-create-an-empty-class-in-python
+    # .   https://stackoverflow.com/questions/61243808/whats-the-usage-of-empty-class-in-python
