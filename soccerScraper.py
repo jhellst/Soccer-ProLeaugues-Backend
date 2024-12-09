@@ -92,8 +92,6 @@ def retrieveLeagueInfo(url):
 
     league_table_body = full_table.find_all("tr")[1:]
 
-    # team_infos = [i for i in league_table_body]
-
     team_infos = []
     if league_table_body:
         team_infos = [i for i in league_table_body]
