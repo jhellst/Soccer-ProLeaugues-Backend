@@ -103,13 +103,3 @@ def retrieveLeagueInfo(url):
         teams_in_league = [TeamInfo(team.find_all("td")) for team in team_infos]
 
     return teams_in_league
-
-    # For each team:
-    # 1) Add the team itself to the db with display info.
-    # 2) Add the team's league statistics to the db.
-
-    # Next steps:
-    # 1) Store data in PostegreSQL database -> Done
-    # 2) Produce data tables and charts from database data -> In progress
-    # 3) React frontend to display information, with option to toggle each league on/off and select different charting options -> Done
-    # 4) Automate to update database periodically
