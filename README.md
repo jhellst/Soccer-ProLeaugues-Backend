@@ -98,7 +98,7 @@ Please note that this project runs on a free Render instance. For this reason, t
 
 ## Project Details
 
-The GitHub repository for this project's frontend can be found here:
+This repository contains the backend code for the Soccer ProLeagues web application. The GitHub repository for this project's frontend can be found here:
 - [Soccer ProLeagues Frontend](https://github.com/jhellst/Soccer-Proleagues-Frontend)
 
 A demo version of this project can be found here: https://soccer-proleagues.onrender.com/
@@ -164,30 +164,29 @@ To get a local copy up and running follow these simple example steps. -->
     - [Download Docker Desktop](https://docs.docker.com/get-started/get-docker/)
 * PostgreSQL
     - [Download PostgreSQL](https://www.postgresql.org/download/)
-<!-- This is an example of how to list things you need to use the software and how to install them. -->
-
-<!-- ### Installation
-1. Clone the repository
-```sh
-   git clone https://github.com/jhellst/Soccer-ProLeagues.git
-   ``` -->
 
 ### Installation Instructions
 1. Follow the instructions below to launch the project backend.
 2. After the project backend is up and running, visit the frontend repository and follow the initial setup instructions.
     - [Soccer Proleagues Frontend](https://github.com/jhellst/Soccer-Proleagues-Frontend)
 
-#### Backend:
+### Backend Installation Instructions:
 1. Clone the backend repository
 ```sh
    git clone https://github.com/jhellst/Soccer-ProLeaugues-Backend.git
    ```
-1. cd into backend folder
+2. cd into backend folder
 ```sh
    cd soccer-proleagues-backend
    ```
-<!-- 2. Instantiate virtual environment -->
-2. Create .env file with the following environmental variables:
+3. Download and install PostgreSQL (if not already installed). A cloud database can be used, alternatively.
+    - [Download PostgreSQL](https://www.postgresql.org/download/)
+4. In PostgreSQL or other database service, create the soccer-proleagues-db.
+5. Run the seed file to create database tables and populate database with latest teams, leagues, and statistics.
+   ```sh
+   python3 seed.py
+   ```
+6. Create .env file with the following environmental variables:
    ```sh
    POSTGRES_DB=<YOUR_DATABASE_NAME>
    POSTGRES_USER=<YOUR_DATABASE_USER>
@@ -195,34 +194,13 @@ To get a local copy up and running follow these simple example steps. -->
    DATABASE_URI=<YOUR_DATABASE_URI> # Example: postgresql:///soccer_proleagues
    SECRET_KEY=<YOUR_SECRET_KEY>
    ```
-3. Download and install PostgreSQL (if not already installed). A cloud database can be used, alternatively.
-    - [Download PostgreSQL](https://www.postgresql.org/download/)
-4. Run Docker command to build
+7. Run Docker command to build
    ```sh
    docker compose up
    ```
-5. Run seed file to create db tables and populate database with latest teams, leagues, and statistics.
-   ```sh
-   python3 seed.py
-   ```
-6. Complete steps to build and run project frontend at the following link: https://github.com/jhellst/Soccer-Proleagues-Frontend
+8. Complete steps to build and run project frontend at the following link: https://github.com/jhellst/Soccer-Proleagues-Frontend
 
-<!-- #### Frontend:
 
-1. cd into frontend folder
-```sh
-   cd soccer-proleagues-backend
-   ```
-2. Run Docker command to build
-   ```sh
-   docker compose up
-   ```
-4. To login, either signup a new user or login with one of the test users:
-   ```sh
-   (username: TestUser, password: test)
-   (username: a, password: a)
-   (username: b, password: b)
-   ``` -->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
