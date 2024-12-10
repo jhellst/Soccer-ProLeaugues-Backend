@@ -137,12 +137,6 @@ def get_user(user_id):
 # API endpoints
 
 
-# Homepage.
-# @app.get('/')
-# def root():
-#     """Show recent list of posts, most-recent first."""
-
-
 @app.get("/leagues")
 @cross_origin()
 def get_all_leagues():
